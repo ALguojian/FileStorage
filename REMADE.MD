@@ -1,30 +1,12 @@
-package com.alguojian.filestorage;
+# android本地存储目录
 
-import android.content.Context;
-import android.os.Build;
-import android.os.Environment;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.util.Log;
+- 内部存储
+- 外部存储
+    - 应用私有目录
+    - 外部目录
 
-import java.io.File;
-
-public class MainActivity extends AppCompatActivity {
-
-    private Context mContext;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main2);
-        mContext = this;
-        init();
-        init2();
-
-        Environment.getDownloadCacheDirectory();//,=/cache
-        Environment.getRootDirectory();//,=system
-    }
-
+## 获得内部存储目录
+```
     /**
      * 获得私有目录文件，卸载之后会自动删除，7.0之后私有目录访问权限必须添加fileprovider访问
      */
@@ -49,7 +31,11 @@ public class MainActivity extends AppCompatActivity {
         File dataDirectory = Environment.getDataDirectory();
 
     }
+```
 
+## 获得外部存储目录
+
+```
     /**
      * 外部存储路径，sd等
      * <p>
@@ -74,7 +60,12 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    /**
+```
+
+# 获得外部存储目录
+
+```
+ /**
      * 获得外部存储路径,包括机身外部存储以及sd卡存储
      */
     public void getExternalStoragePath() {
@@ -87,4 +78,10 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
-}
+```
+
+# 其他目录
+```
+     Environment.getDownloadCacheDirectory();//,=/cache
+     Environment.getRootDirectory();//,=system
+```
